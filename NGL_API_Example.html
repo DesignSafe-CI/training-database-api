@@ -146,8 +146,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Application Programming Interfaces and Relational Databases - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Application Programming Interfaces and Relational Databases - Home"/>`);</script>
   
-    <p class="title logo__title">Application Programming Interfaces and Relational Databases</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -372,12 +378,12 @@ document.write(`
                   
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">from</span> <span class="nn">requests.auth</span> <span class="kn">import</span> <span class="n">HTTPBasicAuth</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">requests.auth</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPBasicAuth</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
 <span class="k">global</span> <span class="n">token</span>
 
 <span class="n">auth_label</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;NGL authentication (expires after 2 hours)&#39;</span><span class="p">)</span>
@@ -389,7 +395,7 @@ document.write(`
 <span class="n">auth_panel</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">auth_label</span><span class="p">,</span> <span class="n">auth_widget</span><span class="p">,</span> <span class="n">out</span><span class="p">])</span>
 <span class="n">display</span><span class="p">(</span><span class="n">auth_panel</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">ngl_auth</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ngl_auth</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">token</span>
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://nextgenerationliquefaction.org/api/query.php/auth&#39;</span>
     <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span><span class="s2">&quot;XY&quot;</span><span class="p">}</span>
@@ -404,7 +410,7 @@ document.write(`
         <span class="n">token</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)[</span><span class="s1">&#39;token&#39;</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">token</span>
     
-<span class="k">def</span> <span class="nf">ngl_query</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ngl_query</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://nextgenerationliquefaction.org/api/query.php/query&#39;</span>
     <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span><span class="s2">&quot;XY&quot;</span><span class="p">,</span> <span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">token</span><span class="p">)}</span>
     <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;sql&#39;</span><span class="p">:</span><span class="n">sql</span><span class="p">}</span>
@@ -439,7 +445,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">sql</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM SITE&#39;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">ngl_query</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
 <span class="n">df</span>
@@ -604,7 +610,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">sql</span> <span class="o">=</span> <span class="s1">&#39;SELECT DISTINCT SCPG_ID FROM SCPG&#39;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">ngl_query</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
 <span class="n">df</span>
@@ -685,7 +691,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.uclageo.com/gm_database/api/index.php/flatfile?format=json&amp;tables=fourier_spectra,motion,time_series,basin_model&amp;limit=1&#39;</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span><span class="s2">&quot;XY&quot;</span><span class="p">}</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
@@ -765,7 +771,7 @@ By Scott J. Brandenberg
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2025.
       <br/>
     
   </p>
